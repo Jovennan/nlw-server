@@ -83,6 +83,25 @@ class PointsController {
      })
   
   }
+
+  async remove( request: Request, response: Response) {
+    const { id } = request.params
+
+    const trx = await knex.transaction()
+    let retorno: Response = response
+    
+    try {
+      const removido = await trx('points').where('id', id).del()
+      console.log('Removido:', removido)
+      retorno = response.json({message: `Point ID: ${id}, is destroyed with success`})
+    } catch {
+      retorno = response.status(400).json({message: 'Point not found.'})
+    }finally {
+      trx.commit()
+      return retorno
+    }
+   
+  }
 }
 
 export default PointsController
