@@ -8,9 +8,12 @@ Aplcation server da NLW 06/2020 by Rocketseat
 
 ## Download
   * ```git clone git@github.com:Jovennan/nlw-server.git```
+  
 ## Instalação
   * cd nlw-server 
   * npm install
+  * npm run knex:migrate
+  * npm run knex:seed 
 
 
 ## Execução
